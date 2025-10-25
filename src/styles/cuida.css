@@ -1,0 +1,166 @@
+.custom-navbar {
+  background-color: #4cae70;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-navbar .navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.custom-navbar .nav-link {
+  color: white !important;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.custom-navbar .nav-link:hover {
+  text-decoration: underline;
+}
+
+.btn-circular-rojo {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+body {
+  background-color: #f6fff9;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.text-cuida {
+  color: #4cae70;
+}
+
+.btn-cuida {
+  background-color: #68ce8f;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cuida:hover {
+  background-color: #4cae70;
+}
+
+.card-cuida {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: auto;
+  max-width: 600px;
+}
+
+.footer-cuida {
+  background-color: #f0fdf4;
+  border-top: 2px solid #4cae70;
+  color: #4cae70;
+  font-size: 0.95rem;
+}
+
+.footer-cuida .social-icons a {
+  margin: 0 10px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #4cae70;
+  transition: color 0.3s ease;
+}
+
+.footer-cuida .social-icons a:hover {
+  color: #68ce8f;
+}
+.frases-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.frase-bloque {
+  width: 250px;
+  background-color: #f0fdf4;
+  border: 2px solid #4cae70;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.img-frase {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.frase-bloque p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.accordion-cuida {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  border: 1px solid #4cae70;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: #f0fdf4;
+}
+
+.accordion-header {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #4cae70;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.flecha {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.flecha.abierta {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  padding: 10px 20px;
+  list-style: none;
+  color: #333;
+}
+
+.accordion-content li {
+  margin-bottom: 8px;
+}
+
+
+
