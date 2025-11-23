@@ -1,0 +1,19 @@
+.btn-circular-rojo {
+  background-color: #dc3545; /* rojo Bootstrap */
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-circular-rojo:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+  cursor: pointer;
+}
