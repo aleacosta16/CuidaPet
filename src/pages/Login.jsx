@@ -4,6 +4,7 @@ import NavbarCuidaPet from "../components/NavbarCuidaPet";
 import Footer from "../components/Footer";
 import "../styles/cuida.css";
 import { validarCorreo, validarClave } from "../utils/validaciones";
+import { login } from "../api"; // 🔹 usar api.js
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ const Login = () => {
     e.preventDefault();
     const errores = [];
 
-    // --- 1. Validaciones de formato ---
     const errCorreo = validarCorreo(correo);
     const errClave = validarClave(clave);
 
@@ -27,28 +27,13 @@ const Login = () => {
       return;
     }
 
-    // --- 2. Lógica de Autenticación con backend ---
     try {
-      const response = await fetch("http://44.197.213.147:8080/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: correo,
-          password: clave
-        })
-      });
+      const usuario = await login(correo, clave);
 
-      if (!response.ok) {
-        throw new Error("Credenciales incorrectas");
-      }
-
-      const usuario = await response.json();
-
-      // Guardar sesión localmente
       localStorage.setItem("usuarioCuidaPet", JSON.stringify({
         id: usuario.id,
-        nombre: usuario.name,
-        correo: usuario.email
+        name: usuario.name,
+        email: usuario.email
       }));
 
       setError("");
@@ -56,7 +41,7 @@ const Login = () => {
 
     } catch (err) {
       console.error("Error al iniciar sesión:", err);
-      setError("Credenciales incorrectas. Verifica tu correo y contraseña, o regístrate.");
+      setError(err.message || "Credenciales incorrectas. Verifica tu correo y contraseña, o regístrate.");
     }
   };
 
@@ -73,6 +58,7 @@ const Login = () => {
               placeholder="Correo electrónico"
               value={correo}
               onChange={(e) => setCorreo(e.target.value)}
+              required
             />
             <input
               type="password"
@@ -80,6 +66,7 @@ const Login = () => {
               placeholder="Contraseña"
               value={clave}
               onChange={(e) => setClave(e.target.value)}
+              required
             />
             {error && <p className="text-danger">{error}</p>}
             <button type="submit" className="btn btn-cuida w-100">Ingresar</button>
@@ -95,6 +82,7 @@ const Login = () => {
 };
 
 export default Login;
+
 
 
 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import NavbarCuidaPet from "../components/NavbarCuidaPet";
 import Footer from "../components/Footer";
 import "../styles/cuida.css";
+import { register } from "../api"; // 🔹 usar api.js
 
 const Registro = () => {
   const [nombre, setNombre] = useState("");
@@ -18,28 +19,12 @@ const Registro = () => {
     }
 
     try {
-      const response = await fetch("http://44.197.213.147:8080/users/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: nombre,
-          email: correo,
-          password: password,
-          role: "USER"
-        })
-      });
+      const nuevoUsuario = await register(nombre, correo, password);
 
-      if (!response.ok) {
-        throw new Error("Error en el registro");
-      }
-
-      const nuevoUsuario = await response.json();
-
-      // Guardar sesión localmente
       localStorage.setItem("usuarioCuidaPet", JSON.stringify({
         id: nuevoUsuario.id,
-        nombre: nuevoUsuario.name,
-        correo: nuevoUsuario.email
+        name: nuevoUsuario.name,
+        email: nuevoUsuario.email
       }));
 
       alert(`¡Registro exitoso! Hola, ${nuevoUsuario.name}.`);
@@ -47,7 +32,7 @@ const Registro = () => {
 
     } catch (error) {
       console.error("Error al registrar:", error);
-      alert("Hubo un problema al registrar el usuario. Intenta nuevamente.");
+      alert(error.message || "Hubo un problema al registrar el usuario. Intenta nuevamente.");
     }
   };
 
@@ -99,4 +84,5 @@ const Registro = () => {
 };
 
 export default Registro;
+
 
